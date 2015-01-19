@@ -232,6 +232,7 @@
 				815D80EF1A6856AB001E638B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
