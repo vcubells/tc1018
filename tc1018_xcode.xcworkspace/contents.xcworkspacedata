@@ -130,5 +130,8 @@
             location = "group:suma_vector.xcodeproj">
          </FileRef>
       </Group>
+      <FileRef
+         location = "group:palindromo/palindromo.xcodeproj">
+      </FileRef>
    </Group>
 </Workspace>
