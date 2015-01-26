@@ -35,10 +35,10 @@ int main(int argc, const char * argv[]) {
     
    // bool existe = BusquedaGenerica<int>::busquedaSecuencial(enteros, valor, longitud);
     
-    bool existe = BusquedaGenerica<int>::busquedaBinaria(enteros, valor, 0, longitud);
+    int pos = BusquedaGenerica<int>::busquedaSecuencialPosicion(enteros, valor, longitud);
     
-    if (existe) {
-        std::cout << "El valor si existe en el arreglo" << std::endl;
+    if (pos != -1) {
+        std::cout << "El valor si existe en el arreglo en posición " << pos << std::endl;
     }
     else {
         std::cout << "El valor no existe en el arreglo" << std::endl;
@@ -60,7 +60,7 @@ int main(int argc, const char * argv[]) {
     
     std::cin >> valorf;
     
-    existe = BusquedaGenerica<float>::busquedaSecuencial(flotantes, valorf, longitud);
+    bool existe = BusquedaGenerica<float>::busquedaSecuencial(flotantes, valorf, longitud);
     
     if (existe) {
         std::cout << "El valor si existe en el arreglo" << std::endl;
