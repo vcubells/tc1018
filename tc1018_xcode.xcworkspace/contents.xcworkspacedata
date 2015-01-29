@@ -9,6 +9,20 @@
       location = "group:Tema_3_Busqueda"
       name = "Tema_3_Busqueda">
       <Group
+         location = "group:busquedaBinaria"
+         name = "busquedaBinaria">
+         <FileRef
+            location = "group:busquedaBinaria.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:busquedaSecuencial"
+         name = "busquedaSecuencial">
+         <FileRef
+            location = "group:busquedaSecuencial.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
          location = "group:busquedaGenerica"
          name = "busquedaGenerica">
          <FileRef
