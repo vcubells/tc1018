@@ -2,6 +2,10 @@
 <Workspace
    version = "1.0">
    <Group
+      location = "group:Tema 4. Ordenamiento"
+      name = "Tema 4. Ordenamiento">
+   </Group>
+   <Group
       location = "group:Tema 3. Busqueda"
       name = "Tema 3. Busqueda">
       <Group
