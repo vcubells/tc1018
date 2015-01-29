@@ -4,9 +4,35 @@
    <Group
       location = "group:Tema 3. Bu&#x301;squeda"
       name = "Tema 3. Bu&#x301;squeda">
-      <FileRef
-         location = "group:busquedaGenerica/busquedaGenerica.xcodeproj">
-      </FileRef>
+      <Group
+         location = "group:busquedaGenerica"
+         name = "busquedaGenerica">
+         <Group
+            location = "group:busquedaGenerica"
+            name = "busquedaGenerica">
+            <FileRef
+               location = "group:BusquedaGenerica.cpp">
+            </FileRef>
+            <FileRef
+               location = "group:BusquedaGenerica.h">
+            </FileRef>
+            <FileRef
+               location = "group:BusquedaGenerica.h.gch">
+            </FileRef>
+            <FileRef
+               location = "group:Libro.cpp">
+            </FileRef>
+            <FileRef
+               location = "group:Libro.h">
+            </FileRef>
+            <FileRef
+               location = "group:main.cpp">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:busquedaGenerica.xcodeproj">
+         </FileRef>
+      </Group>
    </Group>
    <Group
       location = "group:Tema 2. Recursividad"
