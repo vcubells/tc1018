@@ -2,18 +2,22 @@
 <Workspace
    version = "1.0">
    <Group
+      location = "group:Tema_3_Busqueda"
+      name = "Tema_3_Busqueda">
+      <Group
+         location = "group:busquedaGenerica"
+         name = "busquedaGenerica">
+         <FileRef
+            location = "group:busquedaGenerica.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
+   <Group
       location = "group:Tema_2_Recursividad"
       name = "Tema_2_Recursividad">
       <Group
          location = "group:ackermann"
          name = "ackermann">
-         <Group
-            location = "group:ackermann"
-            name = "ackermann">
-            <FileRef
-               location = "group:main.cpp">
-            </FileRef>
-         </Group>
          <FileRef
             location = "group:ackermann.xcodeproj">
          </FileRef>
@@ -21,13 +25,6 @@
       <Group
          location = "group:factorial"
          name = "factorial">
-         <Group
-            location = "group:factorial"
-            name = "factorial">
-            <FileRef
-               location = "group:main.cpp">
-            </FileRef>
-         </Group>
          <FileRef
             location = "group:factorial.xcodeproj">
          </FileRef>
@@ -35,13 +32,6 @@
       <Group
          location = "group:fibonacci"
          name = "fibonacci">
-         <Group
-            location = "group:fibonacci"
-            name = "fibonacci">
-            <FileRef
-               location = "group:main.cpp">
-            </FileRef>
-         </Group>
          <FileRef
             location = "group:fibonacci.xcodeproj">
          </FileRef>
@@ -49,13 +39,6 @@
       <Group
          location = "group:hanoi_recursivo"
          name = "hanoi_recursivo">
-         <Group
-            location = "group:hanoi_recursivo"
-            name = "hanoi_recursivo">
-            <FileRef
-               location = "group:main.cpp">
-            </FileRef>
-         </Group>
          <FileRef
             location = "group:hanoi_recursivo.xcodeproj">
          </FileRef>
@@ -63,13 +46,6 @@
       <Group
          location = "group:invierte_digitos"
          name = "invierte_digitos">
-         <Group
-            location = "group:invierte_digitos"
-            name = "invierte_digitos">
-            <FileRef
-               location = "group:main.cpp">
-            </FileRef>
-         </Group>
          <FileRef
             location = "group:invierte_digitos.xcodeproj">
          </FileRef>
@@ -77,13 +53,6 @@
       <Group
          location = "group:maximo_comun_divisor"
          name = "maximo_comun_divisor">
-         <Group
-            location = "group:maximo_comun_divisor"
-            name = "maximo_comun_divisor">
-            <FileRef
-               location = "group:main.cpp">
-            </FileRef>
-         </Group>
          <FileRef
             location = "group:maximo_comun_divisor.xcodeproj">
          </FileRef>
@@ -91,13 +60,6 @@
       <Group
          location = "group:palindromo"
          name = "palindromo">
-         <Group
-            location = "group:palindromo"
-            name = "palindromo">
-            <FileRef
-               location = "group:main.cpp">
-            </FileRef>
-         </Group>
          <FileRef
             location = "group:palindromo.xcodeproj">
          </FileRef>
@@ -105,13 +67,6 @@
       <Group
          location = "group:suma_digitos"
          name = "suma_digitos">
-         <Group
-            location = "group:suma_digitos"
-            name = "suma_digitos">
-            <FileRef
-               location = "group:main.cpp">
-            </FileRef>
-         </Group>
          <FileRef
             location = "group:suma_digitos.xcodeproj">
          </FileRef>
@@ -119,13 +74,6 @@
       <Group
          location = "group:suma_matriz"
          name = "suma_matriz">
-         <Group
-            location = "group:suma_matriz"
-            name = "suma_matriz">
-            <FileRef
-               location = "group:main.cpp">
-            </FileRef>
-         </Group>
          <FileRef
             location = "group:suma_matriz.xcodeproj">
          </FileRef>
@@ -133,13 +81,6 @@
       <Group
          location = "group:suma_vector"
          name = "suma_vector">
-         <Group
-            location = "group:suma_vector"
-            name = "suma_vector">
-            <FileRef
-               location = "group:main.cpp">
-            </FileRef>
-         </Group>
          <FileRef
             location = "group:suma_vector.xcodeproj">
          </FileRef>
