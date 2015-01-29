@@ -2,8 +2,8 @@
 <Workspace
    version = "1.0">
    <Group
-      location = "group:Tema 3. Bu&#x301;squeda"
-      name = "Tema 3. Bu&#x301;squeda">
+      location = "group:Tema 3. Busqueda"
+      name = "Tema 3. Busqueda">
       <Group
          location = "group:busquedaGenerica"
          name = "busquedaGenerica">
