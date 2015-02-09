@@ -4,6 +4,9 @@
    <Group
       location = "group:Tema_4_Ordenamiento"
       name = "Tema_4_Ordenamiento">
+      <FileRef
+         location = "group:ordenamientoGenerico/ordenamientoGenerico.xcodeproj">
+      </FileRef>
    </Group>
    <Group
       location = "group:Tema_3_Busqueda"

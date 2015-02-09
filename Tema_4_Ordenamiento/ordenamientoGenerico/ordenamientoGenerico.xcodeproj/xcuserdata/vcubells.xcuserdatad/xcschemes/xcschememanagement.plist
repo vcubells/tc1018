@@ -4,15 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>busquedaSecuencial.xcscheme</key>
+		<key>ordenamientoGenerico.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>13</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>81BD48A119AB625200905527</key>
+		<key>81CBF3421A8403A900BBE91B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
