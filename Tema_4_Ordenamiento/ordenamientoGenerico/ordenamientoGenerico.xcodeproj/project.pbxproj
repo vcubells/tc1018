@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		81CBF3471A8403A900BBE91B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CBF3461A8403A900BBE91B /* main.cpp */; };
 		81CBF34F1A8403FB00BBE91B /* OrdenamientoGenerico.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CBF34D1A8403FB00BBE91B /* OrdenamientoGenerico.cpp */; };
+		81CBF3521A8940A400BBE91B /* Persona.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CBF3501A8940A400BBE91B /* Persona.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		81CBF3461A8403A900BBE91B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		81CBF34D1A8403FB00BBE91B /* OrdenamientoGenerico.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OrdenamientoGenerico.cpp; sourceTree = "<group>"; };
 		81CBF34E1A8403FB00BBE91B /* OrdenamientoGenerico.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdenamientoGenerico.h; sourceTree = "<group>"; };
+		81CBF3501A8940A400BBE91B /* Persona.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Persona.cpp; sourceTree = "<group>"; };
+		81CBF3511A8940A400BBE91B /* Persona.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Persona.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,8 @@
 				81CBF3461A8403A900BBE91B /* main.cpp */,
 				81CBF34D1A8403FB00BBE91B /* OrdenamientoGenerico.cpp */,
 				81CBF34E1A8403FB00BBE91B /* OrdenamientoGenerico.h */,
+				81CBF3501A8940A400BBE91B /* Persona.cpp */,
+				81CBF3511A8940A400BBE91B /* Persona.h */,
 			);
 			path = ordenamientoGenerico;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			files = (
 				81CBF34F1A8403FB00BBE91B /* OrdenamientoGenerico.cpp in Sources */,
 				81CBF3471A8403A900BBE91B /* main.cpp in Sources */,
+				81CBF3521A8940A400BBE91B /* Persona.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
