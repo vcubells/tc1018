@@ -1,4 +1,4 @@
-//
+
 //  main.cpp
 //  ordenamientoGenerico
 //
@@ -12,6 +12,7 @@
 #include <ostream>
 #include "Persona.h"
 
+
 int main(int argc, const char * argv[]) {
 
     const int n = 10;
@@ -23,23 +24,20 @@ int main(int argc, const char * argv[]) {
     srand((unsigned int) time(nullptr));
     
     /* Inicializar el arreglo con números aleatorios */
-    std::generate(enteros, enteros+n, [](){return rand() % 100;});
+    std::generate(enteros, enteros+n, [](){return rand() % 100000;});
     
     /* Mostrar números por pantalla */
     std::copy(enteros, enteros+n, std::ostream_iterator<int>(std::cout, " "));
     
     std::cout << std::endl;
     
-    /* Ordenar los elementos del arreglo utilizanod un método de la clase */
-   // Ordenamiento<int>::insercion(enteros, n, Ordenamiento<int>::desc);
-    
-    /* Ordenar los elementos del arreglo utilizando una función lambda */
-    Ordenamiento<int>::insercion(enteros, n, [](int a, int b){ return a > b;});
+    /* Ordenar los elementos del arreglo ascendentemente utilizando un método estático de la clase */
+    Ordenamiento<int>::insercion(enteros, n, Ordenamiento<int>::desc);
     
     /* Mostrar números ordenados por pantalla */
     std::copy(enteros, enteros+n, std::ostream_iterator<int>(std::cout, " "));
     
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
     
     /* Ordenar personas */
     
@@ -52,20 +50,22 @@ int main(int argc, const char * argv[]) {
     personas[1] = Persona("Juana", "Bacallao", 18);
     personas[2] = Persona("Luisa", "Perez", 28);
     
-    /* Mostrar personas por pantalla utilizando */
+    /* Mostrar personas por pantalla utilizando la variante del for de C++11 */
+    std::cout << "--- Listado de personas ---" << std::endl;
     for(auto p : personas)
     {
         std::cout << p;
     }
     
-    /* Ordenar el arreglo de personas utilizando la clase genérica */
-    Ordenamiento<Persona>::seleccion(personas, n_personas, Ordenamiento<Persona>::desc);
+    std::cout << std::endl;
+
+    /* Ordenar el arreglo de personas descendentemente utilizando una función lambda */
+    Ordenamiento<Persona>::seleccion(personas, n_personas, [](Persona a, Persona b){ return a > b;});
     
-    /* Mostrar personas por pantalla utilizando */
-    for(auto p : personas)
-    {
-        std::cout << p;
-    }
+    /* Mostrar personas ordenadas ascendentemente por la edad */
+    std::cout << "--- Listado de personas ordenadas ascendetemente por la edad ---" << std::endl;
+    std::copy(personas, personas+n_personas, std::ostream_iterator<Persona>(std::cout, ""));
+
     
     return 0;
 }

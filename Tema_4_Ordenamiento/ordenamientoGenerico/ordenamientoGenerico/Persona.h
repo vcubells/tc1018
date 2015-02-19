@@ -24,8 +24,9 @@ public:
     Persona(std::string _nombre, std::string _apellidos , int _edad) : nombre(_nombre), apellidos(_apellidos), edad(_edad) {}
     
     bool operator >(Persona & persona);
-     bool operator <(Persona & persona);
-    friend std::ostream & operator << (std::ostream & os, Persona & persona);
+    bool operator <(Persona & persona);
+    
+    friend std::ostream & operator << (std::ostream & os,const Persona & persona);
     
 };
 #endif /* defined(__ordenamientoGenerico__Persona__) */

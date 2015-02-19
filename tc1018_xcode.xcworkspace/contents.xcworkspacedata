@@ -2,10 +2,23 @@
 <Workspace
    version = "1.0">
    <Group
+      location = "group:Tema_5_Memoria_Dinamica"
+      name = "Tema_5_Memoria_Dinamica">
+      <FileRef
+         location = "group:apuntadores/apuntadores.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
       location = "group:Tema_4_Ordenamiento"
       name = "Tema_4_Ordenamiento">
       <FileRef
          location = "group:ordenamientoGenerico/ordenamientoGenerico.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:ordenar_numeros/ordenar_numeros.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:ordenar_contratos/ordenar_contratos.xcodeproj">
       </FileRef>
    </Group>
    <Group
@@ -36,6 +49,13 @@
    <Group
       location = "group:Tema_2_Recursividad"
       name = "Tema_2_Recursividad">
+      <Group
+         location = "container:"
+         name = "robot">
+         <FileRef
+            location = "group:Tema_2_Recursividad/robot/robot/robot.xcodeproj">
+         </FileRef>
+      </Group>
       <Group
          location = "group:ackermann"
          name = "ackermann">
