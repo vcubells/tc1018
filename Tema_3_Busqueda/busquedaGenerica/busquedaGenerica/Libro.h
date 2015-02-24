@@ -14,9 +14,9 @@
 
 class Libro {
 private:
-    std::string titulo;
-    int anio_pub;
-    std::string isbn;
+    std::string titulo = "Sin definir";
+    int anio_pub = 0;
+    std::string isbn = "---";
     
 public:
     Libro();

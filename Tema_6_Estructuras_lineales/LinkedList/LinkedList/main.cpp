@@ -9,23 +9,30 @@
 #include <iostream>
 #include <string>
 #include "Node.h"
-#include "../../../Tema_4_Ordenamiento/ordenamientoGenerico/ordenamientoGenerico/Persona.h"
+#include "Computadora.h"
+
 int main(int argc, const char * argv[]) {
     
-    Node<int> first;
+    //using namespace vcn;
+    
+    using vcn::Computadora;
+    using vcn::Node;
+    
+    Node<int> first(1);
     
     Node<float> second(3.45);
     
     Node<std::string> cad("Esto es una cadena");
     
-    Persona juana("Juana", "Bacallao", 89);
-    Node<Persona> persona(juana);
+    Computadora laptop;
+    
+    Node<Computadora> pc(laptop);
     
     std::cout << first << std::endl;
     std::cout << second << std::endl;
     std::cout << cad << std::endl;
-    
-    std::cout << persona << std::endl;
+
+    std::cout << pc << std::endl;
     
     
     return 0;

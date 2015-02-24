@@ -9,6 +9,8 @@
 #ifndef LinkedList_Node_h
 #define LinkedList_Node_h
 
+namespace vcn {
+    
 template <class T>
 class Node {
     T info;
@@ -25,15 +27,17 @@ public:
     void setNext(Node<T> * value) { next = value; }
     
     template <typename Tn>
-    friend std::ostream & operator << (std::ostream & os, const Node<Tn>  & node);
+    friend std::ostream & operator << (std::ostream & os, Node<Tn>  & node);
 };
 
 template <class T>
-std::ostream & operator << (std::ostream & os, const Node<T>  & node)
+std::ostream & operator << (std::ostream & os, Node<T>  & node)
 {
     os << node.info;
     
     return os;
+}
+    
 }
 
 
