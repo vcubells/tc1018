@@ -2,6 +2,43 @@
 <Workspace
    version = "1.0">
    <Group
+      location = "group:Examenes"
+      name = "Examenes">
+      <Group
+         location = "group:Primavera_2015"
+         name = "Primavera_2015">
+         <Group
+            location = "group:Primer_Parcial"
+            name = "Primer_Parcial">
+            <FileRef
+               location = "group:EP1_E1/EP1_E1.xcodeproj">
+            </FileRef>
+            <FileRef
+               location = "group:EP1_E2/EP1_E2.xcodeproj">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Segundo_Parcial"
+            name = "Segundo_Parcial">
+         </Group>
+         <Group
+            location = "group:Final"
+            name = "Final">
+         </Group>
+      </Group>
+   </Group>
+   <Group
+      location = "group:Tema_7_Estructuras_no_lineales"
+      name = "Tema_7_Estructuras_no_lineales">
+   </Group>
+   <Group
+      location = "group:Tema_6_Estructuras_lineales"
+      name = "Tema_6_Estructuras_lineales">
+      <FileRef
+         location = "group:LinkedList/LinkedList.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
       location = "group:Tema_5_Memoria_Dinamica"
       name = "Tema_5_Memoria_Dinamica">
       <FileRef

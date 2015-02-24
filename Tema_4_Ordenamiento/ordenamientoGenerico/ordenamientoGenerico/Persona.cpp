@@ -33,7 +33,7 @@ bool Persona::operator <(Persona & persona)
     return edad < persona.edad;
 }
 
-std::ostream & operator << (std::ostream & os, const Persona & persona)
+std::ostream & operator << (std::ostream & os,  const Persona & persona)
 {
     os << persona.apellidos << ", " << persona.nombre << "(" << persona.edad << ")" << std::endl;
     

@@ -26,7 +26,7 @@ public:
     bool operator >(Persona & persona);
     bool operator <(Persona & persona);
     
-    friend std::ostream & operator << (std::ostream & os,const Persona & persona);
+    friend std::ostream & operator << (std::ostream & os, const Persona & persona);
     
 };
 #endif /* defined(__ordenamientoGenerico__Persona__) */
