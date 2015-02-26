@@ -10,13 +10,14 @@
 #include <string>
 #include "Node.h"
 #include "Computadora.h"
+#include "LinkedList.h"
 
 int main(int argc, const char * argv[]) {
     
-    //using namespace vcn;
+using namespace vcn;
     
-    using vcn::Computadora;
-    using vcn::Node;
+ //   using vcn::Computadora;
+  //  using vcn::Node;
     
     Node<int> first(1);
     
@@ -33,6 +34,20 @@ int main(int argc, const char * argv[]) {
     std::cout << cad << std::endl;
 
     std::cout << pc << std::endl;
+    
+    LinkedList<int> * numeros  = new LinkedList<int>();
+    
+    /* Obtener el primer elemento */
+    std::cout  << "First = " << numeros->first() << std::endl;
+    
+    /* Determinar el tamaño */
+    std::cout  << "Size = " << numeros->size() << std::endl;
+    
+    /* Determinar si la lista está vacía */
+    std::cout  << "Empty = " << (numeros->empty() ? "true" : "false") << std::endl;
+    
+    
+    delete numeros;
     
     
     return 0;
