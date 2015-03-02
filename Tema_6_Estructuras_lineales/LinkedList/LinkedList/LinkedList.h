@@ -89,16 +89,40 @@ namespace vcn {
         return _size == 0;
     }
     
+    /* Si position < 0 se inserta al inicio
+     * Si position > _size se inserta al final
+     * en cualquier otro caso, se inserta en la posición dada
+     */
     template  <class T>
     void LinkedList<T>::insert(T element, int position)
     {
+        /* Crear el nuevo nodo a insertar */
+        Node<T> * newnode = new Node<T>(element);
         
+        insert(newnode, position);
     }
     
     template  <class T>
-    void LinkedList<T>::insert(Node<T> * node, int position)
+    void LinkedList<T>::insert(Node<T> * newnode, int position)
     {
+        /* Cuando la lista está vacía o position < 0*/
+        if (empty() || position <= 0) {
+            newnode->setNext(_first);
+            _first = newnode;
+        }
+        /* Cuando se inserta en cualquier posición diferente del inicio */
+        else {
+            
+            if (position > _size) { position = _size; }
+            
+            Node<T> * tmp = at(position-1);
+            
+            newnode->setNext(tmp->getNext());
+            tmp->setNext(newnode);
+        }
         
+        /* Incrementar el tamaño de la lista */
+        ++_size;
     }
     
     template  <class T>
@@ -128,7 +152,32 @@ namespace vcn {
     template  <class T>
     Node<T> * LinkedList<T>::remove(int position)
     {
+        if (empty() || (position < 0 || position >= _size )) {
+            return nullptr;
+        }
+
+        Node<T> * removenode;
         
+        /* Eliminar el primer nodo de la lista */
+        if (position == 0) {
+            removenode = _first;
+            _first = _first->getNext();
+            
+        }
+        /* Eliminar cualquier otro nodo */
+        else {
+            Node<T> * prev = at(position-1);
+            removenode = prev->getNext();
+            prev->setNext(removenode->getNext());
+        }
+
+        /* Establecer el siguiente en nullptr */
+        removenode->setNext(nullptr);
+        
+        /* Decrementar el tamaño de la lista */
+        --_size;
+        
+        return removenode;
     }
     
     template  <class T>
@@ -146,19 +195,57 @@ namespace vcn {
     template  <class T>
     void LinkedList<T>::clear()
     {
+        Node<T> * tmp = _first;
+        
+        while (tmp != nullptr) {
+            _first = _first->getNext();
+            delete tmp;
+            tmp = _first;
+        }
+        
+        _size = 0;
+        
+        _first = nullptr;
+    }
+    
+    template  <class T>
+    Node<T> *  LinkedList<T>::at(int position)
+    {
+        if (empty() || (position < 0 || position >= _size )) {
+            return nullptr;
+        }
+        
+        int pos = 0;
+        Node<T> * tmp = _first;
+        
+        while (tmp != nullptr && pos++ < position)
+        {
+            tmp = tmp->getNext();
+        }
+        
+        return tmp;
         
     }
     
     template  <class T>
-    Node<T> *  LinkedList<T>::at(int)
+    int LinkedList<T>::at(Node<T> * node)
     {
+        if (empty() || node == nullptr) {
+            return -1;
+        }
         
-    }
-    
-    template  <class T>
-    int LinkedList<T>::at(Node<T> *)
-    {
+        int pos = 0;
+        Node<T> * tmp = _first;
         
+        while (tmp != nullptr && tmp != node)
+        {
+            tmp = tmp->getNext();
+            ++pos;
+        }
+        
+        if (pos == _size){ return -1; }
+        
+        return pos;
     }
     
     template <class T>
