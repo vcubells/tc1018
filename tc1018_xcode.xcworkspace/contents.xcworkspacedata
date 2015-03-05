@@ -37,6 +37,9 @@
       <FileRef
          location = "group:LinkedList/LinkedList.xcodeproj">
       </FileRef>
+      <FileRef
+         location = "group:busquedaEnLista/busquedaEnLista.xcodeproj">
+      </FileRef>
    </Group>
    <Group
       location = "group:Tema_5_Memoria_Dinamica"

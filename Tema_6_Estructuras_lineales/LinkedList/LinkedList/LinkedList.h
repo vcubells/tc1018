@@ -63,6 +63,8 @@ namespace vcn {
         
         Node<T> * operator [](const int);
         
+        bool search(T);
+        
     };
     
     template  <class T>
@@ -263,6 +265,22 @@ namespace vcn {
     Node<T> * LinkedList<T>::operator [](const int position)
     {
         return at(position);
+    }
+    
+    template  <class T>
+    bool LinkedList<T>::search(T element)
+    {
+        bool exist = false;
+        
+        Node<T> * tmp = _first;
+        
+        while (tmp != nullptr && !exist)
+        {
+            exist = tmp->getInfo() == element;
+            tmp = tmp->getNext();
+        }
+        
+        return exist;
     }
     
 }
