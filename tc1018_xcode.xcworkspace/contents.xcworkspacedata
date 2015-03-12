@@ -40,6 +40,9 @@
       <FileRef
          location = "group:busquedaEnLista/busquedaEnLista.xcodeproj">
       </FileRef>
+      <FileRef
+         location = "group:CircularLinkedList/CircularLinkedList.xcodeproj">
+      </FileRef>
    </Group>
    <Group
       location = "group:Tema_5_Memoria_Dinamica"

@@ -1,67 +1,46 @@
 //
 //  main.cpp
-//  LinkedList
+//  CircularLinkedList
 //
-//  Created by Vicente Cubells Nonell on 23/02/15.
+//  Created by Vicente Cubells Nonell on 09/03/15.
 //  Copyright (c) 2015 Vicente Cubells Nonell. All rights reserved.
 //
 
 #include <iostream>
-#include <string>
-#include "Node.h"
-#include "Computadora.h"
-#include "LinkedList.h"
+#include "CircularLinkedList.h"
 
 int main(int argc, const char * argv[]) {
     
     using namespace vcn;
     
-  //  using vcn::Computadora;
-  //  using vcn::Node;
-    
-    /* Crear un Node entero */
-    Node<int> first(1);
-    
-    /* Crear un Node float */
-    Node<float> second(3.45);
-    
-    /* Crear un Node string */
-    Node<std::string> cad("Esto es una cadena");
-    
-    /* Crear un Node de un tipo definido por el usuario */
-    Computadora laptop;
-    
-    Node<Computadora> pc(laptop);
-    
-    /* Visualizar todos los tipos de nodos */
-    std::cout << first << std::endl;
-    std::cout << second << std::endl;
-    std::cout << cad << std::endl;
-    std::cout << pc << std::endl;
-    
-    /* Demostrar el uso de la clase genércia LinkedList<T> */
+    /* Demostrar el uso de la clase genérica CircularLinkedList<T> */
     
     /* Declaración de una lista de enteros */
-    LinkedList<int> * numeros  = new LinkedList<int>();
+    CircularLinkedList<int> * numeros = new CircularLinkedList<int>();
     
     /* Determinar el tamaño */
     std::cout  << "Size = " << numeros->size() << std::endl;
     
     /* Determinar si la lista está vacía */
     std::cout  << "Empty = " << (numeros->empty() ? "true" : "false") << std::endl;
+
     
     /* Insertar elemento en la lista */
-    numeros->insert(1, 0);
-    numeros->insert(-1, -2);
-    numeros->insert(-2, 0);
-    numeros->insert(2, 10);
-    numeros->insert(10, numeros->size());
-    numeros->insert(5, 2);
+    
+    numeros->LinkedList::insert(1, 0);
+    numeros->LinkedList::insert(-1, -2);
+    numeros->LinkedList::insert(-2, 0);
+    numeros->LinkedList::insert(2, 10);
+    numeros->LinkedList::insert(10, numeros->size());
+    numeros->LinkedList::insert(5, 2);
     numeros->insertFront(-10);
     numeros->insertBack(20);
-    
+
     /* Obtener el primer elemento */
-    std::cout  << "First = " << numeros->first() << std::endl;
+    std::cout  << "First = " << *numeros->first() << std::endl;
+    
+    /* Obtener el último elemento */
+    std::cout  << "Last = " << *numeros->last() << std::endl;
     
     /* Crear un nuevo nodo  e insertarlo en la lista */
     Node<int> * newnode = new Node<int>(30);
@@ -78,7 +57,7 @@ int main(int argc, const char * argv[]) {
     /* Obtener la posición de un elemento dado un apuntador al mismo */
     Node<int> * node = numeros->at(0);
     
-    std::cout  << "Node está en posición " << numeros->at(node) << std::endl;
+    std::cout  << "Node está en posición " << numeros->LinkedList::at(node) << std::endl;
     
     /* Borrar un nodo de la lista */
     Node<int> * removenode = numeros->remove(6);
@@ -94,4 +73,5 @@ int main(int argc, const char * argv[]) {
     /* Borrar toda la lista y liberar la memoria de todos los nodos */
     delete numeros;
     
+    return 0;
 }

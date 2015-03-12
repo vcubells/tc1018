@@ -7,7 +7,6 @@
 //
 
 #include <iostream>
-#include "../../../Tema_3_Busqueda/busquedaGenerica/busquedaGenerica/BusquedaGenerica.h"
 #include "../../LinkedList/LinkedList/LinkedList.h"
 
 int main(int argc, const char * argv[]) {
@@ -55,6 +54,56 @@ int main(int argc, const char * argv[]) {
     std::cout << "M: " << *M << std::endl;
     std::cout << "P: " << *P << std::endl;
     
+    
+    /* N - M */
+    
+    P->clear();
+    
+    N->insertBack(15);
+    
+    int n1 = N->size();
+    
+    for (int i = 0; i < n1; ++i) {
+        numero = N->at(i)->getInfo();
+        
+        if ( !M->search(numero) )
+        {
+            P->insertBack(numero);
+        }
+    }
+
+    std::cout << "P: " << *P << std::endl;
+
+    
+    /* M - N */
+    
+    P->clear();
+    
+    for (int i = 0; i < m; ++i) {
+        numero = M->at(i)->getInfo();
+        
+        if ( !N->search(numero) )
+        {
+            P->insertBack(numero);
+        }
+    }
+    
+    std::cout << "P: " << *P << std::endl;
+    
+    /* N intersect M */
+    
+    P->clear();
+    
+    for (int i = 0; i < n; ++i) {
+        numero = N->at(i)->getInfo();
+        
+        if ( M->search(numero) )
+        {
+            P->insertBack(numero);
+        }
+    }
+    
+    std::cout << "P: " << *P << std::endl;
     
     /* Liberar la memoria ocupada por las listas */
     delete N;

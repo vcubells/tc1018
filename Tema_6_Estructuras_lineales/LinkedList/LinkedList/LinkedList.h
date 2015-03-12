@@ -15,9 +15,12 @@ namespace vcn {
 
     template <class T>
     class LinkedList {
+    protected:
+        
         Node<T> * _first = nullptr;
         int _size = 0;
         
+        /* Clase Iterator */
         class Iterator {
             LinkedList<T> * _data;
             int _position;
@@ -35,60 +38,82 @@ namespace vcn {
         LinkedList() {}
         virtual ~LinkedList();
         
-        Node<T> * first();
-        int size();
-        bool empty();
+        /* Obtener un apuntador al primer elemento */
+        virtual Node<T> * first();
         
-        void insert(T, int);
-        void insert(Node<T> *, int);
-        void insertFront(T);
-        void insertFront(Node<T> *);
-        void insertBack(T);
-        void insertBack(Node<T> *);
+        /* Obtener el tamaño de la lista */
+        virtual int size();
         
-        Node<T> * remove(int);
-        Node<T> *  removeFront();
-        Node<T> *  removeBack();
+        /* Determinar si la lista está vacía */
+        virtual bool empty();
         
-        void clear();
+        /* Insertar un elemento nuevo */
+        virtual void insert(T, int);
+        virtual void insert(Node<T> *, int);
+        virtual void insertFront(T);
+        virtual void insertFront(Node<T> *);
+        virtual void insertBack(T);
+        virtual void insertBack(Node<T> *);
         
-        Node<T> *  at(int);
-        int at(Node<T> *);
+        /* Eliminar un elemento y regresar un apuntador al mismo.
+         * Nota: No liberan la memmoria ocupada por el nodo eliminado 
+         */
+        virtual Node<T> * remove(int);
+        virtual Node<T> *  removeFront();
+        virtual Node<T> *  removeBack();
+        virtual Node<T> * remove(Node<T> *);
         
+        /* Eliminar todos los elementos de la lista y liberar la memoria ocupada
+         * por los mismos.
+         */
+        virtual void clear();
+        
+        /* Obtener el elemento que se encuentra en una posición */
+        virtual Node<T> * at(int);
+        
+        /* Obtener la posición de un nodo */
+        virtual int at(Node<T> *);
+
+        /* Mostrar el contenido de la lista */
         template <typename Tn>
         friend std::ostream & operator <<(std::ostream &, LinkedList<Tn> &);
         
+        /* Funciones que utiliza el foreach */
         Iterator begin() { return { this, 0}; }
         Iterator end() {return {this, _size }; }
         
+        /* Sobrecarga del operador índice */
         Node<T> * operator [](const int);
         
-        bool search(T);
+        /* Buscar un elemento */
+        virtual bool search(T);
+        virtual int searchAndReturnPosition(T);
+        virtual Node<T> * searchAndReturnNode(T);
         
     };
     
     template  <class T>
     LinkedList<T>::~LinkedList()
     {
-        clear();
+        this->clear();
     }
     
     template  <class T>
     Node<T> * LinkedList<T>::first()
     {
-        return _first;
+        return this->_first;
     }
     
     template  <class T>
     int LinkedList<T>::size()
     {
-        return _size;
+        return this->_size;
     }
     
     template  <class T>
     bool LinkedList<T>::empty()
     {
-        return _size == 0;
+        return this->_size == 0;
     }
     
     /* Si position < 0 se inserta al inicio
@@ -101,60 +126,61 @@ namespace vcn {
         /* Crear el nuevo nodo a insertar */
         Node<T> * newnode = new Node<T>(element);
         
-        insert(newnode, position);
+        this->insert(newnode, position);
     }
     
     template  <class T>
     void LinkedList<T>::insert(Node<T> * newnode, int position)
     {
-        /* Cuando la lista está vacía o position < 0*/
-        if (empty() || position <= 0) {
-            newnode->setNext(_first);
-            _first = newnode;
+        /* Cuando la lista está vacía o position < 0 */
+        if (this->empty() || position <= 0) {
+            newnode->setNext(this->_first);
+            this->_first = newnode;
         }
         /* Cuando se inserta en cualquier posición diferente del inicio */
         else {
             
-            if (position > _size) { position = _size; }
+            if (position > this->_size) { position = this->_size; }
             
-            Node<T> * tmp = at(position-1);
+            Node<T> * tmp = this->at(position-1);
             
             newnode->setNext(tmp->getNext());
             tmp->setNext(newnode);
         }
         
         /* Incrementar el tamaño de la lista */
-        ++_size;
+        ++this->_size;
     }
     
     template  <class T>
     void LinkedList<T>::insertFront(T element)
     {
-        insert(element, 0);
+        this->insert(element, 0);
     }
     
     template  <class T>
     void LinkedList<T>::insertFront(Node<T> * node)
     {
-        insert(node, 0);
+        this->insert(node, 0);
     }
     
     template  <class T>
     void LinkedList<T>::insertBack(T element)
     {
-        insert(element, _size);
+        this->insert(element, this->_size);
     }
     
     template  <class T>
     void LinkedList<T>::insertBack(Node<T> * node)
     {
-        insert(node, _size);
+        this->insert(node, this->_size);
     }
     
     template  <class T>
     Node<T> * LinkedList<T>::remove(int position)
     {
-        if (empty() || (position < 0 || position >= _size )) {
+        /* Cuando la lista está vacía o position es inválida */
+        if (this->empty() || (position < 0 || position >= this->_size )) {
             return nullptr;
         }
 
@@ -162,13 +188,13 @@ namespace vcn {
         
         /* Eliminar el primer nodo de la lista */
         if (position == 0) {
-            removenode = _first;
-            _first = _first->getNext();
+            removenode = this->_first;
+            this->_first = this->_first->getNext();
             
         }
         /* Eliminar cualquier otro nodo */
         else {
-            Node<T> * prev = at(position-1);
+            Node<T> * prev = this->at(position-1);
             removenode = prev->getNext();
             prev->setNext(removenode->getNext());
         }
@@ -177,7 +203,7 @@ namespace vcn {
         removenode->setNext(nullptr);
         
         /* Decrementar el tamaño de la lista */
-        --_size;
+        --this->_size;
         
         return removenode;
     }
@@ -185,40 +211,51 @@ namespace vcn {
     template  <class T>
     Node<T> *  LinkedList<T>::removeFront()
     {
-        return remove(0);
+        return this->remove(0);
     }
     
     template  <class T>
     Node<T> *  LinkedList<T>::removeBack()
     {
-        return remove(_size - 1);
+        return this->remove(this->_size - 1);
+    }
+    
+    template  <class T>
+    Node<T> *  LinkedList<T>::remove(Node<T> * node)
+    {
+        return this->remove( this->at(node) );
     }
     
     template  <class T>
     void LinkedList<T>::clear()
     {
-        Node<T> * tmp = _first;
+        /* Cuando la lista está vacía */
+        if ( this->empty() ) { return; }
+        
+        Node<T> * tmp = this->_first;
         
         while (tmp != nullptr) {
-            _first = _first->getNext();
+            this->_first = this->_first->getNext();
             delete tmp;
-            tmp = _first;
+            tmp = this->_first;
         }
         
-        _size = 0;
+        this->_size = 0;
         
-        _first = nullptr;
+        this->_first = nullptr;
     }
     
     template  <class T>
     Node<T> *  LinkedList<T>::at(int position)
     {
-        if (empty() || (position < 0 || position >= _size )) {
+        /* Cuando la lista está vacía o position es inválida */
+        if (this->empty() || (position < 0 || position >= this->_size )) {
             return nullptr;
         }
         
+        /*  Buscar el nodo que se encuentra en position */
         int pos = 0;
-        Node<T> * tmp = _first;
+        Node<T> * tmp = this->_first;
         
         while (tmp != nullptr && pos++ < position)
         {
@@ -232,22 +269,13 @@ namespace vcn {
     template  <class T>
     int LinkedList<T>::at(Node<T> * node)
     {
-        if (empty() || node == nullptr) {
+        /* Cuando la lista está vacía o node es nullptr */
+        if (this->empty() || node == nullptr) {
             return -1;
         }
         
-        int pos = 0;
-        Node<T> * tmp = _first;
-        
-        while (tmp != nullptr && tmp != node)
-        {
-            tmp = tmp->getNext();
-            ++pos;
-        }
-        
-        if (pos == _size){ return -1; }
-        
-        return pos;
+        /* Buscar node y regresar su posición */
+        return this->searchAndReturnPosition( node->getInfo() );
     }
     
     template <class T>
@@ -264,23 +292,54 @@ namespace vcn {
     template  <class T>
     Node<T> * LinkedList<T>::operator [](const int position)
     {
-        return at(position);
+        return this->at(position);
     }
     
     template  <class T>
     bool LinkedList<T>::search(T element)
     {
-        bool exist = false;
+        return ( this->searchAndReturnPosition(element) != -1 );
+    }
+    
+    template  <class T>
+    int LinkedList<T>::searchAndReturnPosition(T element)
+    {
+        /* Cuando la lista está vacía */
+        if ( this->empty() ) { return -1; }
         
-        Node<T> * tmp = _first;
+        /* Buscar el element y regresar su posición */
+        int pos = 0;
+        Node<T> * tmp = this->_first;
         
-        while (tmp != nullptr && !exist)
+        while (tmp != nullptr && tmp->getInfo() != element)
         {
-            exist = tmp->getInfo() == element;
+            tmp = tmp->getNext();
+            ++pos;
+        }
+        
+        if (pos == this->_size){ return -1; }
+        
+        return pos;
+    }
+    
+    template  <class T>
+    Node<T> * LinkedList<T>::searchAndReturnNode(T element)
+    {
+        /* Cuando la lista está vacía */
+        if ( this->empty() ) { return nullptr; }
+        
+        /* Buscar el element y regresar un apuntador al mismo */
+        Node<T> * node = nullptr;
+        
+        Node<T> * tmp = this->_first;
+        
+        while (tmp != nullptr && node == nullptr)
+        {
+            if (tmp->getInfo() == element) { node = tmp; }
             tmp = tmp->getNext();
         }
         
-        return exist;
+        return node;
     }
     
 }
