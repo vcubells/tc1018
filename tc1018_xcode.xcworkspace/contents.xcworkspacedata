@@ -49,6 +49,9 @@
       <FileRef
          location = "group:Stack/Stack.xcodeproj">
       </FileRef>
+      <FileRef
+         location = "group:Queue/Queue.xcodeproj">
+      </FileRef>
    </Group>
    <Group
       location = "group:Tema_5_Memoria_Dinamica"
