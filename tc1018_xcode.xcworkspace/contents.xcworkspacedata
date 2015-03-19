@@ -46,6 +46,9 @@
       <FileRef
          location = "group:ejemplo_suicidas/ejemplo_suicidas.xcodeproj">
       </FileRef>
+      <FileRef
+         location = "group:Stack/Stack.xcodeproj">
+      </FileRef>
    </Group>
    <Group
       location = "group:Tema_5_Memoria_Dinamica"
