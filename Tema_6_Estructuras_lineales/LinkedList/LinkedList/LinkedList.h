@@ -22,11 +22,11 @@ namespace vcn {
         
         /* Clase Iterator */
         class Iterator {
-            LinkedList<T> * _data;
+            const LinkedList<T> * _data;
             int _position;
             
         public:
-            Iterator(LinkedList<T> * _adata, int _aposition)
+            Iterator( const LinkedList<T> * _adata, int _aposition)
             : _data(_adata), _position(_aposition) {}
             
             Node<T> operator *() const { return *(_data->at(_position)); }
@@ -39,28 +39,28 @@ namespace vcn {
         virtual ~LinkedList();
         
         /* Obtener un apuntador al primer elemento */
-        virtual Node<T> * first();
+        virtual Node<T> * first() const;
         
         /* Obtener el tamaño de la lista */
-        virtual int size();
+        virtual int size() const;
         
         /* Determinar si la lista está vacía */
-        virtual bool empty();
+        virtual bool empty() const;
         
         /* Insertar un elemento nuevo */
-        virtual void insert(T, int);
+        virtual void insert(const T &, int);
         virtual void insert(Node<T> *, int);
-        virtual void insertFront(T);
-        virtual void insertFront(Node<T> *);
-        virtual void insertBack(T);
-        virtual void insertBack(Node<T> *);
+        void insertFront(const T &);
+        void insertFront(Node<T> *);
+        void insertBack(const T &);
+        void insertBack(Node<T> *);
         
         /* Eliminar un elemento y regresar un apuntador al mismo.
-         * Nota: No liberan la memmoria ocupada por el nodo eliminado 
+         * Nota: No liberan la memmoria ocupada por el nodo eliminado
          */
         virtual Node<T> * remove(int);
-        virtual Node<T> *  removeFront();
-        virtual Node<T> *  removeBack();
+        Node<T> * removeFront();
+        Node<T> * removeBack();
         virtual Node<T> * remove(Node<T> *);
         
         /* Eliminar todos los elementos de la lista y liberar la memoria ocupada
@@ -69,26 +69,26 @@ namespace vcn {
         virtual void clear();
         
         /* Obtener el elemento que se encuentra en una posición */
-        virtual Node<T> * at(int);
+        virtual Node<T> * at(int) const;
         
         /* Obtener la posición de un nodo */
-        virtual int at(Node<T> *);
+        virtual int at(Node<T> *) const;
 
         /* Mostrar el contenido de la lista */
         template <typename Tn>
-        friend std::ostream & operator <<(std::ostream &, LinkedList<Tn> &);
+        friend std::ostream & operator <<(std::ostream &, const LinkedList<Tn> &);
         
         /* Funciones que utiliza el foreach */
-        Iterator begin() { return { this, 0}; }
-        Iterator end() {return {this, _size }; }
+        Iterator begin() const { return { this, 0}; }
+        Iterator end() const { return {this, _size }; }
         
         /* Sobrecarga del operador índice */
         Node<T> * operator [](const int);
         
         /* Buscar un elemento */
-        virtual bool search(T);
-        virtual int searchAndReturnPosition(T);
-        virtual Node<T> * searchAndReturnNode(T);
+        bool search(const T &) const;
+        virtual int searchAndReturnPosition(const T &) const;
+        virtual Node<T> * searchAndReturnNode(const T &) const;
         
     };
     
@@ -99,19 +99,19 @@ namespace vcn {
     }
     
     template  <class T>
-    Node<T> * LinkedList<T>::first()
+    Node<T> * LinkedList<T>::first() const
     {
         return this->_first;
     }
     
     template  <class T>
-    int LinkedList<T>::size()
+    int LinkedList<T>::size() const
     {
         return this->_size;
     }
     
     template  <class T>
-    bool LinkedList<T>::empty()
+    bool LinkedList<T>::empty() const
     {
         return this->_size == 0;
     }
@@ -121,7 +121,7 @@ namespace vcn {
      * en cualquier otro caso, se inserta en la posición dada
      */
     template  <class T>
-    void LinkedList<T>::insert(T element, int position)
+    void LinkedList<T>::insert(const T & element, int position)
     {
         /* Crear el nuevo nodo a insertar */
         Node<T> * newnode = new Node<T>(element);
@@ -153,7 +153,7 @@ namespace vcn {
     }
     
     template  <class T>
-    void LinkedList<T>::insertFront(T element)
+    void LinkedList<T>::insertFront(const T & element)
     {
         this->insert(element, 0);
     }
@@ -165,7 +165,7 @@ namespace vcn {
     }
     
     template  <class T>
-    void LinkedList<T>::insertBack(T element)
+    void LinkedList<T>::insertBack(const T & element)
     {
         this->insert(element, this->_size);
     }
@@ -246,7 +246,7 @@ namespace vcn {
     }
     
     template  <class T>
-    Node<T> *  LinkedList<T>::at(int position)
+    Node<T> *  LinkedList<T>::at(int position) const
     {
         /* Cuando la lista está vacía o position es inválida */
         if (this->empty() || (position < 0 || position >= this->_size )) {
@@ -267,7 +267,7 @@ namespace vcn {
     }
     
     template  <class T>
-    int LinkedList<T>::at(Node<T> * node)
+    int LinkedList<T>::at(Node<T> * node) const
     {
         /* Cuando la lista está vacía o node es nullptr */
         if (this->empty() || node == nullptr) {
@@ -279,9 +279,9 @@ namespace vcn {
     }
     
     template <class T>
-    std::ostream & operator <<(std::ostream & os, LinkedList<T> & list)
+    std::ostream & operator <<(std::ostream & os, const LinkedList<T> & list)
     {
-        for (auto node : list )
+        for (const Node<T> & node : list )
         {
             os << node << std::endl;
         }
@@ -296,13 +296,13 @@ namespace vcn {
     }
     
     template  <class T>
-    bool LinkedList<T>::search(T element)
+    bool LinkedList<T>::search(const T & element) const
     {
         return ( this->searchAndReturnPosition(element) != -1 );
     }
     
     template  <class T>
-    int LinkedList<T>::searchAndReturnPosition(T element)
+    int LinkedList<T>::searchAndReturnPosition(const T & element) const
     {
         /* Cuando la lista está vacía */
         if ( this->empty() ) { return -1; }
@@ -323,7 +323,7 @@ namespace vcn {
     }
     
     template  <class T>
-    Node<T> * LinkedList<T>::searchAndReturnNode(T element)
+    Node<T> * LinkedList<T>::searchAndReturnNode(const T & element) const
     {
         /* Cuando la lista está vacía */
         if ( this->empty() ) { return nullptr; }

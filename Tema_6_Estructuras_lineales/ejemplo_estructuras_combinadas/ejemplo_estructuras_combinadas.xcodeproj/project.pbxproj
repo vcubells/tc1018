@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		816D9EAC1AB220BE0022CCD1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 816D9EAB1AB220BE0022CCD1 /* main.cpp */; };
-		816D9EB51AB2221C0022CCD1 /* Juego.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 816D9EB31AB2221C0022CCD1 /* Juego.cpp */; };
-		816E654C1AC5DFA20048676B /* Suicida.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 816E654A1AC5DFA20048676B /* Suicida.cpp */; };
+		81A364CC1ABB6644008AD6AC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A364CB1ABB6644008AD6AC /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		816D9EA61AB220BE0022CCD1 /* CopyFiles */ = {
+		81A364C61ABB6644008AD6AC /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -25,16 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		816D9EA81AB220BE0022CCD1 /* ejemplo_suicidas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ejemplo_suicidas; sourceTree = BUILT_PRODUCTS_DIR; };
-		816D9EAB1AB220BE0022CCD1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		816D9EB31AB2221C0022CCD1 /* Juego.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Juego.cpp; sourceTree = "<group>"; };
-		816D9EB41AB2221C0022CCD1 /* Juego.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Juego.h; sourceTree = "<group>"; };
-		816E654A1AC5DFA20048676B /* Suicida.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Suicida.cpp; sourceTree = "<group>"; };
-		816E654B1AC5DFA20048676B /* Suicida.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Suicida.h; sourceTree = "<group>"; };
+		81A364C81ABB6644008AD6AC /* ejemplo_estructuras_combinadas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ejemplo_estructuras_combinadas; sourceTree = BUILT_PRODUCTS_DIR; };
+		81A364CB1ABB6644008AD6AC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		816D9EA51AB220BE0022CCD1 /* Frameworks */ = {
+		81A364C51ABB6644008AD6AC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -44,100 +38,94 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		816D9E9F1AB220BE0022CCD1 = {
+		81A364BF1ABB6644008AD6AC = {
 			isa = PBXGroup;
 			children = (
-				816D9EAA1AB220BE0022CCD1 /* ejemplo_suicidas */,
-				816D9EA91AB220BE0022CCD1 /* Products */,
+				81A364CA1ABB6644008AD6AC /* ejemplo_estructuras_combinadas */,
+				81A364C91ABB6644008AD6AC /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		816D9EA91AB220BE0022CCD1 /* Products */ = {
+		81A364C91ABB6644008AD6AC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				816D9EA81AB220BE0022CCD1 /* ejemplo_suicidas */,
+				81A364C81ABB6644008AD6AC /* ejemplo_estructuras_combinadas */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		816D9EAA1AB220BE0022CCD1 /* ejemplo_suicidas */ = {
+		81A364CA1ABB6644008AD6AC /* ejemplo_estructuras_combinadas */ = {
 			isa = PBXGroup;
 			children = (
-				816D9EAB1AB220BE0022CCD1 /* main.cpp */,
-				816D9EB31AB2221C0022CCD1 /* Juego.cpp */,
-				816D9EB41AB2221C0022CCD1 /* Juego.h */,
-				816E654A1AC5DFA20048676B /* Suicida.cpp */,
-				816E654B1AC5DFA20048676B /* Suicida.h */,
+				81A364CB1ABB6644008AD6AC /* main.cpp */,
 			);
-			path = ejemplo_suicidas;
+			path = ejemplo_estructuras_combinadas;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		816D9EA71AB220BE0022CCD1 /* ejemplo_suicidas */ = {
+		81A364C71ABB6644008AD6AC /* ejemplo_estructuras_combinadas */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 816D9EAF1AB220BE0022CCD1 /* Build configuration list for PBXNativeTarget "ejemplo_suicidas" */;
+			buildConfigurationList = 81A364CF1ABB6644008AD6AC /* Build configuration list for PBXNativeTarget "ejemplo_estructuras_combinadas" */;
 			buildPhases = (
-				816D9EA41AB220BE0022CCD1 /* Sources */,
-				816D9EA51AB220BE0022CCD1 /* Frameworks */,
-				816D9EA61AB220BE0022CCD1 /* CopyFiles */,
+				81A364C41ABB6644008AD6AC /* Sources */,
+				81A364C51ABB6644008AD6AC /* Frameworks */,
+				81A364C61ABB6644008AD6AC /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ejemplo_suicidas;
-			productName = ejemplo_suicidas;
-			productReference = 816D9EA81AB220BE0022CCD1 /* ejemplo_suicidas */;
+			name = ejemplo_estructuras_combinadas;
+			productName = ejemplo_estructuras_combinadas;
+			productReference = 81A364C81ABB6644008AD6AC /* ejemplo_estructuras_combinadas */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		816D9EA01AB220BE0022CCD1 /* Project object */ = {
+		81A364C01ABB6644008AD6AC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Vicente Cubells Nonell";
 				TargetAttributes = {
-					816D9EA71AB220BE0022CCD1 = {
+					81A364C71ABB6644008AD6AC = {
 						CreatedOnToolsVersion = 6.2;
 					};
 				};
 			};
-			buildConfigurationList = 816D9EA31AB220BE0022CCD1 /* Build configuration list for PBXProject "ejemplo_suicidas" */;
+			buildConfigurationList = 81A364C31ABB6644008AD6AC /* Build configuration list for PBXProject "ejemplo_estructuras_combinadas" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 816D9E9F1AB220BE0022CCD1;
-			productRefGroup = 816D9EA91AB220BE0022CCD1 /* Products */;
+			mainGroup = 81A364BF1ABB6644008AD6AC;
+			productRefGroup = 81A364C91ABB6644008AD6AC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				816D9EA71AB220BE0022CCD1 /* ejemplo_suicidas */,
+				81A364C71ABB6644008AD6AC /* ejemplo_estructuras_combinadas */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		816D9EA41AB220BE0022CCD1 /* Sources */ = {
+		81A364C41ABB6644008AD6AC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				816E654C1AC5DFA20048676B /* Suicida.cpp in Sources */,
-				816D9EB51AB2221C0022CCD1 /* Juego.cpp in Sources */,
-				816D9EAC1AB220BE0022CCD1 /* main.cpp in Sources */,
+				81A364CC1ABB6644008AD6AC /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		816D9EAD1AB220BE0022CCD1 /* Debug */ = {
+		81A364CD1ABB6644008AD6AC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -177,7 +165,7 @@
 			};
 			name = Debug;
 		};
-		816D9EAE1AB220BE0022CCD1 /* Release */ = {
+		81A364CE1ABB6644008AD6AC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -211,14 +199,14 @@
 			};
 			name = Release;
 		};
-		816D9EB01AB220BE0022CCD1 /* Debug */ = {
+		81A364D01ABB6644008AD6AC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		816D9EB11AB220BE0022CCD1 /* Release */ = {
+		81A364D11ABB6644008AD6AC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -228,25 +216,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		816D9EA31AB220BE0022CCD1 /* Build configuration list for PBXProject "ejemplo_suicidas" */ = {
+		81A364C31ABB6644008AD6AC /* Build configuration list for PBXProject "ejemplo_estructuras_combinadas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				816D9EAD1AB220BE0022CCD1 /* Debug */,
-				816D9EAE1AB220BE0022CCD1 /* Release */,
+				81A364CD1ABB6644008AD6AC /* Debug */,
+				81A364CE1ABB6644008AD6AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		816D9EAF1AB220BE0022CCD1 /* Build configuration list for PBXNativeTarget "ejemplo_suicidas" */ = {
+		81A364CF1ABB6644008AD6AC /* Build configuration list for PBXNativeTarget "ejemplo_estructuras_combinadas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				816D9EB01AB220BE0022CCD1 /* Debug */,
-				816D9EB11AB220BE0022CCD1 /* Release */,
+				81A364D01ABB6644008AD6AC /* Debug */,
+				81A364D11ABB6644008AD6AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 816D9EA01AB220BE0022CCD1 /* Project object */;
+	rootObject = 81A364C01ABB6644008AD6AC /* Project object */;
 }

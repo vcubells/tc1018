@@ -11,7 +11,7 @@
 
 namespace vcn {
     
-    std::ostream & operator <<(std::ostream & os, vcn::Computadora & c)
+    std::ostream & operator <<(std::ostream & os, const Computadora & c)
     {
         os << "Display : " << c.pantalla << " pixeles"<< std::endl;
         os << "RAM     : " << c.ram << " GB" << std::endl;

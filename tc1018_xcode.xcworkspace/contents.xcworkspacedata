@@ -30,6 +30,9 @@
    <Group
       location = "group:Tema_7_Estructuras_no_lineales"
       name = "Tema_7_Estructuras_no_lineales">
+      <FileRef
+         location = "group:BinaryTree/BinaryTree.xcodeproj">
+      </FileRef>
    </Group>
    <Group
       location = "group:Tema_6_Estructuras_lineales"
@@ -51,6 +54,9 @@
       </FileRef>
       <FileRef
          location = "group:Queue/Queue.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:ejemplo_estructuras_combinadas/ejemplo_estructuras_combinadas.xcodeproj">
       </FileRef>
    </Group>
    <Group

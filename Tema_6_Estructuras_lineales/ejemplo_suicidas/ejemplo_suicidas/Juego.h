@@ -9,15 +9,14 @@
 #ifndef __ejemplo_suicidas__Juego__
 #define __ejemplo_suicidas__Juego__
 
-#include <unistd.h>
-#include <time.h>
-#include <stdlib.h>
-#include "Suicida.h"
 #include "../../CircularLinkedList/CircularLinkedList/CircularLinkedList.h"
+#include "Suicida.h"
+
+using namespace vcn;
 
 class Juego {
 private:
-    CircularLinkedList<Suicida> * jugadores = nullptr;
+    CircularLinkedList<Suicida> jugadores;
     
 public:
     Juego();

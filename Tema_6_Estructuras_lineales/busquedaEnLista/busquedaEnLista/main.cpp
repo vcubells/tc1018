@@ -9,106 +9,103 @@
 #include <iostream>
 #include "../../LinkedList/LinkedList/LinkedList.h"
 
+using namespace vcn;
+
 int main(int argc, const char * argv[]) {
     
     const int n = 10;
     const int m = 12;
     
-    using namespace vcn;
-    
     /* Declarar las listas */
-    LinkedList<int> * N = new LinkedList<int>();
-    LinkedList<int> * M = new LinkedList<int>();
-    LinkedList<int> * P = new LinkedList<int>();
+    LinkedList<int> N;
+    LinkedList<int> M;
+    LinkedList<int> P;
     
-    
+    /* Llenar la lista N con valores */
     for (int i = 0; i < n; ++i) {
-        N->insertBack(i);
+        N.insertBack(i);
     }
     
+    /* Llenar la lista M con valores */
     for (int i = 0; i < m; ++i) {
-        M->insertBack(i);
+        M.insertBack(i);
     }
-
     
     /* Unir ambas listas */
-    
     int numero;
     
+    /* Se insertan en P los registros de N */
     for (int i = 0; i < n; ++i) {
-        numero = N->at(i)->getInfo();
-        P->insertBack(numero);
+        numero = N.at(i)->getInfo();
+        P.insertBack(numero);
     }
     
+    /* Se insertan en P los registros de M que no aparezcan ya en P */
     for (int i = 0; i < m; ++i) {
-        numero = M->at(i)->getInfo();
+        numero = M.at(i)->getInfo();
         
-        if ( !P->search(numero) )
+        if ( !P.search(numero) )
         {
-            P->insertBack(numero);
+            P.insertBack(numero);
         }
     }
     
     /* Visualizar las listas */
-    std::cout << "N: " << *N << std::endl;
-    std::cout << "M: " << *M << std::endl;
-    std::cout << "P: " << *P << std::endl;
+    std::cout << "N: " << N << std::endl;
+    std::cout << "M: " << M << std::endl;
+    std::cout << "P: " << P << std::endl;
     
     
     /* N - M */
+    P.clear();
     
-    P->clear();
+    N.insertBack(15);
     
-    N->insertBack(15);
+    int n1 = N.size();
     
-    int n1 = N->size();
-    
+    /* Se insertan en P los registros de N que no están en M */
     for (int i = 0; i < n1; ++i) {
-        numero = N->at(i)->getInfo();
+        numero = N.at(i)->getInfo();
         
-        if ( !M->search(numero) )
+        if ( !M.search(numero) )
         {
-            P->insertBack(numero);
+            P.insertBack(numero);
         }
     }
 
-    std::cout << "P: " << *P << std::endl;
+    std::cout << "P: " << P << std::endl;
 
     
     /* M - N */
+    P.clear();
     
-    P->clear();
-    
+    /* Se insertan en P los registros de M que no están en N */
     for (int i = 0; i < m; ++i) {
-        numero = M->at(i)->getInfo();
+        numero = M.at(i)->getInfo();
         
-        if ( !N->search(numero) )
+        if ( !N.search(numero) )
         {
-            P->insertBack(numero);
+            P.insertBack(numero);
         }
     }
     
-    std::cout << "P: " << *P << std::endl;
+    std::cout << "P: " << P << std::endl;
+    
     
     /* N intersect M */
+    P.clear();
     
-    P->clear();
-    
+    /* Se insertan en P los registros de N que si están en M */
     for (int i = 0; i < n; ++i) {
-        numero = N->at(i)->getInfo();
+        numero = N.at(i)->getInfo();
         
-        if ( M->search(numero) )
+        if ( M.search(numero) )
         {
-            P->insertBack(numero);
+            P.insertBack(numero);
         }
     }
     
-    std::cout << "P: " << *P << std::endl;
-    
-    /* Liberar la memoria ocupada por las listas */
-    delete N;
-    delete M;
-    delete P;
+    std::cout << "P: " << P << std::endl;
     
     return 0;
 }

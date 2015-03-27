@@ -25,7 +25,7 @@ namespace vcn {
         : pantalla(_pantalla), ram(_ram), frecuencia(_frecuencia)
         {}
         
-        friend std::ostream & operator <<(std::ostream & os, Computadora &);
+        friend std::ostream & operator <<(std::ostream & os, const Computadora &);
     };
 
 }

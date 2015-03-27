@@ -2,16 +2,16 @@
 //  Suicida.h
 //  ejemplo_suicidas
 //
-//  Created by Vicente Cubells Nonell on 12/03/15.
+//  Created by Vicente Cubells Nonell on 27/03/15.
 //  Copyright (c) 2015 Vicente Cubells Nonell. All rights reserved.
 //
 
-#ifndef ejemplo_suicidas_Suicida_h
-#define ejemplo_suicidas_Suicida_h
+#ifndef __ejemplo_suicidas__Suicida__
+#define __ejemplo_suicidas__Suicida__
+
+#include <iostream>
 
 #include <string>
-#include <ostream>
-#include <iostream>
 
 class Suicida {
 private:
@@ -32,21 +32,4 @@ public:
 };
 
 
-bool Suicida::operator ==(const Suicida & suicida)
-{
-    return _nombre == suicida._nombre;
-}
-
-bool Suicida::operator !=(const Suicida & suicida)
-{
-    return !(*this == suicida);
-}
-
-std::ostream & operator <<(std::ostream & os, const Suicida & suicida)
-{
-    os << suicida._nombre;
-    
-    return os;
-}
-
-#endif
+#endif /* defined(__ejemplo_suicidas__Suicida__) */
