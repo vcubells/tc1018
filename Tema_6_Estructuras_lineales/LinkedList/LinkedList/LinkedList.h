@@ -89,6 +89,9 @@ namespace vcn {
         bool search(const T &) const;
         virtual int searchAndReturnPosition(const T &) const;
         virtual Node<T> * searchAndReturnNode(const T &) const;
+        int numberOfOcurrences(const T &) const;
+        bool isDuplicate(const T &) const;
+
         
     };
     
@@ -340,6 +343,33 @@ namespace vcn {
         }
         
         return node;
+    }
+    
+    template  <class T>
+    int LinkedList<T>::numberOfOcurrences(const T & element) const
+    {
+        /* Cuando la lista está vacía */
+        if ( this->empty() ) { return 0; }
+        
+        /* Buscar el número de ocurrencias de un elemento */
+        int ocurrences = 0;
+        
+        Node<T> * tmp = this->_first;
+        
+        while (tmp != nullptr)
+        {
+            if (tmp->getInfo() == element) { ++ocurrences; }
+            tmp = tmp->getNext();
+        }
+        
+        return ocurrences;
+
+    }
+    
+    template  <class T>
+    bool LinkedList<T>::isDuplicate(const T & element) const
+    {
+        return (numberOfOcurrences(element) > 1);
     }
     
 }

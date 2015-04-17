@@ -20,6 +20,15 @@
          <Group
             location = "group:Segundo_Parcial"
             name = "Segundo_Parcial">
+            <FileRef
+               location = "group:EP2_E1/EP2_E1.xcodeproj">
+            </FileRef>
+            <FileRef
+               location = "group:EP2_E2/EP2_E2.xcodeproj">
+            </FileRef>
+            <FileRef
+               location = "group:EP2_E3/EP2_E3.xcodeproj">
+            </FileRef>
          </Group>
          <Group
             location = "group:Final"
@@ -32,6 +41,12 @@
       name = "Tema_7_Estructuras_no_lineales">
       <FileRef
          location = "group:BinaryTree/BinaryTree.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:stl/stl.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:frecuencias_con_map_stl/frecuencias_con_map_stl.xcodeproj">
       </FileRef>
    </Group>
    <Group
