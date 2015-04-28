@@ -48,6 +48,12 @@
       <FileRef
          location = "group:frecuencias_con_map_stl/frecuencias_con_map_stl.xcodeproj">
       </FileRef>
+      <FileRef
+         location = "group:grafo_matriz_adyacencia/grafo_matriz_adyacencia.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Graph/Graph.xcodeproj">
+      </FileRef>
    </Group>
    <Group
       location = "group:Tema_6_Estructuras_lineales"
