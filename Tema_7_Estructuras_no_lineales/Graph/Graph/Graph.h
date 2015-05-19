@@ -12,6 +12,7 @@
 #include "Vertex.h"
 #include <string>
 #include <algorithm>
+#include <map>
 
 template <class V, class E>
 class Graph {
@@ -27,6 +28,7 @@ public:
     void addVertex(Vertex<V, E> * vertex);
     void addEdge(Vertex<V, E> * source, Vertex<V, E> * target, const E & info);
     void removeEdge(Vertex<V, E> * source, Vertex<V, E> * target, const E & info);
+    bool isComplete();
     
     template <class Vn, class En>
     friend std::ostream & operator<<(std::ostream & os, const Graph<Vn, En> & graph);
@@ -78,11 +80,40 @@ void Graph<V, E>::removeEdge(Vertex<V, E> * source, Vertex<V, E> * target, const
         }
     }
     
-    
     if (edge) {
         vertex->removeEdge(edge);
     }
 
+}
+
+template <class V, class E>
+bool Graph<V, E>::isComplete()
+{
+    bool complete = true;
+    
+    std::map<V, int> outputIncidents;
+    
+    for (auto vertex : nodes) {
+        if (vertex->getEdges()->size() < (nodes.size() - 1) ) {
+            return false;
+        }
+
+        std::vector< Edge<V, E> * > * edges = vertex->getEdges();
+        
+        for (auto e : *edges)
+        {
+            outputIncidents[e->getTarget()->getInfo()]++;
+        }
+        
+        if (outputIncidents.size() < (nodes.size() - 1) ) {
+            return false;
+        }
+        
+        outputIncidents.clear();
+        
+    }
+    
+    return complete;
 }
 
 template <class V, class E>

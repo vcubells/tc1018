@@ -33,6 +33,15 @@
          <Group
             location = "group:Final"
             name = "Final">
+            <FileRef
+               location = "group:EF_E1/EF_E1.xcodeproj">
+            </FileRef>
+            <FileRef
+               location = "group:EF_E2/EF_E2.xcodeproj">
+            </FileRef>
+            <FileRef
+               location = "group:EF_E3/EF_E3.xcodeproj">
+            </FileRef>
          </Group>
       </Group>
    </Group>

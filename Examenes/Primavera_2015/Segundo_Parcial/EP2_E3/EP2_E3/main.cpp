@@ -11,13 +11,48 @@
 
 using namespace vcn;
 
+void addSets(LinkedList<char> *, LinkedList<char> *);
+LinkedList<char> * multiSets(LinkedList<char> *, LinkedList<char> *);
+
+
 int main(int argc, const char * argv[]) {
     
     char * cadena = "(({3}+({1,4,2}))*({1,2,3,4,5}*{4,3,2,5}*{2,3,4,5,6}+{}))+{}";
     
-    LinkedList<char>
+    
     
 
     
     return 0;
+}
+
+
+void addSets(LinkedList<char> * first, LinkedList<char> * second)
+{
+    for (auto item : *first) {
+        second->insertBack(item.getInfo());
+    }
+    
+    delete second;
+}
+
+LinkedList<char> * multiSets(LinkedList<char> * first, LinkedList<char> * second)
+{
+    LinkedList<char> * temp = new LinkedList<char>();
+    char element;
+    
+    for (auto item : *first) {
+        element = item.getInfo();
+        
+        if ( second->search(element) )
+        {
+            temp->insertBack(element);
+        }
+    }
+    
+    delete first;
+    delete second;
+    
+    return temp;
+    
 }
