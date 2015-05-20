@@ -88,6 +88,9 @@
       <FileRef
          location = "group:ejemplo_estructuras_combinadas/ejemplo_estructuras_combinadas.xcodeproj">
       </FileRef>
+      <FileRef
+         location = "group:rpn_calculator/rpn_calculator.xcodeproj">
+      </FileRef>
    </Group>
    <Group
       location = "group:Tema_5_Memoria_Dinamica"

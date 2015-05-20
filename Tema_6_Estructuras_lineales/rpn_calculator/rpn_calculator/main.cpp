@@ -1,10 +1,12 @@
 //
 //  main.cpp
-//  EP2_E3
+//  rpn_calculator
 //
-//  Created by Vicente Cubells Nonell on 13/04/15.
+//  Created by Vicente Cubells Nonell on 20/05/15.
 //  Copyright (c) 2015 Vicente Cubells Nonell. All rights reserved.
 //
+
+/* Este código fue obtenido de http://www.technical-recipes.com/2011/a-mathematical-expression-parser-in-java-and-cpp/ */
 
 #include <utility>
 #include <iostream>
@@ -15,8 +17,6 @@
 #include <string>
 #include <vector>
 #include <iterator>
-#include <algorithm>
-
 #include <stdlib.h>
 
 
@@ -31,7 +31,8 @@ typedef std::string::iterator s_iter;
 const OpMap::value_type assocs[] =
 {  OpMap::value_type( "+", std::make_pair( 0, LEFT_ASSOC ) ),
     OpMap::value_type( "-", std::make_pair( 0, LEFT_ASSOC ) ),
-    OpMap::value_type( "*", std::make_pair( 5, LEFT_ASSOC ) ) };
+    OpMap::value_type( "*", std::make_pair( 5, LEFT_ASSOC ) ),
+    OpMap::value_type( "/", std::make_pair( 5, LEFT_ASSOC ) ) };
 
 const OpMap opmap( assocs, assocs + sizeof( assocs ) / sizeof( assocs[ 0 ] ) );
 
@@ -42,7 +43,7 @@ int cmpPrecedence( const std::string& token1, const std::string& token2 );
 bool infixToRPN( const std::vector<std::string>& inputTokens,
                 const int& size,
                 std::vector<std::string>& strArray );
-std::string evaluateRPN( std::vector<std::string> tokens );
+double evaluateRPN( std::vector<std::string> tokens );
 std::vector<std::string> getExpressionTokens( const std::string& expression );
 
 
@@ -52,17 +53,11 @@ void Print( const std::string& message,
            const InputIterator& itend,
            const std::string& delimiter);
 
-std::string addition(std::string first, std::string second);
-std::string multiplication(std::string first, std::string second);
-
 int main(int argc, const char * argv[]) {
     
-    //std::string s = "{7,1,193}+{55,1}";
-    //std::string s = "{7,1,193,1}*{55,1}";
-    //std::string s = "{1,3,9,77}*({7,1,193}+{55})";
-    //std::string s = "{1,3,9,77}*{7,1,193}+{55}";
-    
-    std::string s = "(({3}+({1,4,2}))*({1,2,3,4,5}*{4,3,2,5}*{2,3,4,5,6}+{}))+{}";
+    std::string s = "( 1 + 2) * ( 3 / 4 )-(5+6)";
+    //std::string s = "( 1+ 2) * (3 /4)- 5";
+    //std::string s = "-8 + 5";
     
     Print<char, s_iter>( "Input expression:", s.begin(), s.end(), "" );
     
@@ -75,7 +70,7 @@ int main(int argc, const char * argv[]) {
     std::vector<std::string> rpn;
     if ( infixToRPN( tokens, (int) tokens.size(), rpn ) )
     {
-        std::string d = evaluateRPN( rpn );
+        double d = evaluateRPN( rpn );
         Print<std::string, cv_iter>( "RPN tokens:  ", rpn.begin(), rpn.end(), " " );
         
         std::cout << "Result = " << d << std::endl;
@@ -86,7 +81,7 @@ int main(int argc, const char * argv[]) {
     }
     
     return 0;
-
+    
 }
 
 
@@ -100,7 +95,7 @@ bool isParenthesis( const std::string& token)
 bool isOperator( const std::string& token)
 {
     return token == "+" || token == "-"
-     || token == "*" || token == "/";
+    || token == "*" || token == "/";
 }
 
 // Test associativity of operator token
@@ -219,14 +214,14 @@ bool infixToRPN( const std::vector<std::string>& inputTokens,
         // Pop the operator onto the output queue./
         out.push_back( stackToken );
         stack.pop();
-    }          
+    }
     
-    strArray.assign( out.begin(), out.end() );    
+    strArray.assign( out.begin(), out.end() );
     
-    return success;      
+    return success;
 }
 
-std::string evaluateRPN( std::vector<std::string> tokens )
+double evaluateRPN( std::vector<std::string> tokens )
 {
     std::stack<std::string> st;
     
@@ -242,21 +237,33 @@ std::string evaluateRPN( std::vector<std::string> tokens )
         }
         else
         {
-            std::string result =  "";
+            double result =  0.0;
             
             // Token is an operator: pop top two entries
             const std::string val2 = st.top();
             st.pop();
+            const double d2 = strtod( val2.c_str(), NULL );
             
             if ( !st.empty() )
             {
                 const std::string val1 = st.top();
                 st.pop();
+                const double d1 = strtod( val1.c_str(), NULL );
                 
                 //Get the result
-                result = token == "+" ? addition(val1, val2) :
-                token == "*" ? multiplication(val1, val2) : " ";
+                result = token == "+" ? d1 + d2 :
+                token == "-" ? d1 - d2 :
+                token == "*" ? d1 * d2 :
+                d1 / d2;
             }
+            else
+            {
+                if ( token == "-" )
+                    result = d2 * -1;
+                else
+                    result = d2;
+            }
+            
             
             // Push result onto stack
             std::ostringstream s;
@@ -265,7 +272,7 @@ std::string evaluateRPN( std::vector<std::string> tokens )
         }
     }
     
-    return st.top();
+    return strtod( st.top().c_str(), NULL );
 }
 
 std::vector<std::string> getExpressionTokens( const std::string& expression )
@@ -306,12 +313,12 @@ std::vector<std::string> getExpressionTokens( const std::string& expression )
         }
     }
     
-    /* La expresión termina con un número */
+    /* Este caso fue añadido para solucionar el problema que se presenta cuando la expresión termina con un número */
     if ( str != "" )
     {
         tokens.push_back( str );
     }
-
+    
     return tokens;
 }
 
@@ -331,123 +338,3 @@ void Print( const std::string& message,
     std::cout << std::endl;
 }
 
-/************************************************************/
-/*** Funciones para operaciones de conjuntos              ***/
-/************************************************************/
-
-bool isSeparator( const std::string & token)
-{
-    return token == "{" || token == "}" || token == ",";
-}
-
-std::vector<std::string> split(const std::string & expression )
-{
-    std::vector<std::string> tokens;
-    std::string str = "";
-    
-    int len = (int) expression.length();
-    
-    for ( int i = 0; i < len ; ++i )
-    {
-        const std::string token( 1, expression[ i ] );
-        
-        if ( isSeparator( token ) )
-        {
-            if ( !str.empty() )
-            {
-                tokens.push_back( str ) ;
-            }
-            str = "";
-        }
-        else
-        {
-            // Append the numbers
-            if ( !token.empty() )
-            {
-                str.append( token );
-            }
-            else
-            {
-                if ( str != "" )
-                {
-                    tokens.push_back( str );
-                    str = "";
-                }
-            }
-        }
-    }
-    
-    /* La expresión termina con un número */
-    if ( str != "" )
-    {
-        tokens.push_back( str );
-    }
-    
-    return tokens;
-
-}
-
-std::string merge(const std::vector<std::string> & tokens )
-{
-    std::string out = "{";
-    
-    for (auto item : tokens) {
-        if (!isSeparator( std::string( 1, out.back() ) ) ) {
-            out.append(",");
-        }
-        out.append(item);
-    }
-    
-    out.append("}");
-    
-    return out;
-}
-
-std::string addition(std::string first, std::string second)
-{
-    std::vector<std::string> setOne = split(first);
-    
-    std::vector<std::string> setTwo = split(second);
-    
-    std::vector<std::string> out(setOne.size());
-    
-    copy(setOne.begin(), setOne.end(), out.begin());
-    
-    for (auto item : setTwo) {
-        auto exist = find(out.begin(), out.end(), item );
-        
-        if ( exist == out.end() )
-        {
-            out.push_back(item);
-        }
-    }
-    
-    return merge(out);
-}
-
-std::string multiplication(std::string first, std::string second)
-{
-    std::vector<std::string> setOne = split(first);
-    
-    std::vector<std::string> setTwo = split(second);
-    
-    std::vector<std::string> out;
-    
-    for (auto item : setOne) {
-        
-        auto exist = find(setTwo.begin(), setTwo.end(), item );
-        
-        if ( exist != setTwo.end()   )
-        {
-            exist = find(out.begin(), out.end(), item );
-            
-            if ( exist == out.end() )
-            {
-                out.push_back(item);
-            }
-        }
-    }
-    
-    return merge(out);
-    
-}
