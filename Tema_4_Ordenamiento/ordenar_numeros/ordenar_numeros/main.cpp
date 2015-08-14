@@ -9,6 +9,7 @@
 #include <iostream>
 #include <algorithm>
 #include <ostream>
+#include <ctime>
 #include "../../ordenamientoGenerico/ordenamientoGenerico/OrdenamientoGenerico.h"
 
 
@@ -17,8 +18,10 @@ typedef void (*t_algoritmo)(int [], int, t_criterio);
 
 int main(int argc, const char * argv[]) {
     
-    const int n = 10000;
+    const int n = 100;
     
+    time_t inicio, final;
+
     /* Declarar el arreglo */
     int enteros[n];
     
@@ -65,12 +68,18 @@ int main(int argc, const char * argv[]) {
     algoritmos[2] = Ordenamiento<int>::insercion;
 
     /* Ejecutar el algoritmo de ordenamiento seleccionado por el usuario */
+    inicio = time(nullptr);
     algoritmos[algoritmo-1](enteros, n, criterios[criterio-1]);
-    
+    final = time(nullptr);
+	
     /* Mostrar números ordenados por pantalla */
     std::copy(enteros, enteros+n, std::ostream_iterator<int>(std::cout, " "));
     
     std::cout << std::endl;
-    
+ 
+    std::cout <<  "Número de segundos transcurridos: " <<  difftime(final, inicio) << std::endl;
+
+
+   
     return 0;
 }
